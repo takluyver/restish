@@ -77,12 +77,12 @@ class TestUtils(unittest.TestCase):
 
     def test_join_path(self):
         self.assertEquals(url.join_path([]), b'')
-        self.assertEquals(url.join_path(['']), '/')
-        self.assertEquals(url.join_path(['', '']), '//')
-        self.assertEquals(url.join_path(['foo']), '/foo')
-        self.assertEquals(url.join_path(['foo', 'bar']), '/foo/bar')
-        self.assertEquals(url.join_path(['/']), '/%2F')
-        self.assertEquals(url.join_path([U_POUND]), '/%C2%A3')
+        self.assertEquals(url.join_path(['']), b'/')
+        self.assertEquals(url.join_path(['', '']), b'//')
+        self.assertEquals(url.join_path(['foo']), b'/foo')
+        self.assertEquals(url.join_path(['foo', 'bar']), b'/foo/bar')
+        self.assertEquals(url.join_path(['/']), b'/%2F')
+        self.assertEquals(url.join_path([U_POUND]), b'/%C2%A3')
 
     def test_split_query(self):
         self.assertEquals(url.split_query(''), [])
