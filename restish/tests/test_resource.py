@@ -188,10 +188,10 @@ class TestResource(unittest.TestCase):
                 return http.ok([('Content-Type', 'text/plain')], 'text')
             @resource.HEAD()
             def head(self, request):
-                return http.ok([('Content-Type', 'text/plain'), ('Content-Length', '100')], None)
+                return http.ok([(b'Content-Type', b'text/plain'),(b'Content-Length', b'100')], None)
         head_response = Resource()(http.Request.blank('/', environ={'REQUEST_METHOD': 'HEAD'}))
-        self.assertEqual(head_response.headers['content-length'], '100')
-        assert head_response.body == ''
+        self.assertEqual(head_response.headers[b'content-length'], b'100')
+        assert head_response.body == b''
 
     def test_bad_accept(self):
         class Resource(resource.Resource):
