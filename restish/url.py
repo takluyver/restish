@@ -140,7 +140,7 @@ def join_query(query_list):
     return '&'.join(one(KV) for KV in query_list)
 
 
-class URL(str):
+class URL(bytes):
     """
     URL class.
 
@@ -160,13 +160,13 @@ class URL(str):
         """
         Create a new URL instance from a str URL.
         """
-        str.__init__(url)
+        bytes.__init__(url)
         self.parsed_url = urlsplit(url)
 
     def __eq__(self, other):
         if isinstance(other, URL):
             return self.parsed_url == other.parsed_url
-        elif isinstance(other, str):
+        elif isinstance(other, bytes):
             return self.parsed_url == urlsplit(other)
         return False
 
